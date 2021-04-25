@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Router} from '@angular/router';
-import {of as observableOf} from 'rxjs';
+import { Router } from '@angular/router';
+import { of as observableOf } from 'rxjs';
 
 @Injectable()
 export class AuthService {
 
-  private _authUrl = 'http://localhost:8000/ws/auth/';
+  private _authUrl = 'http://3.218.156.241:9423/auth/';
   constructor(private http: HttpClient, private router: Router) {}
 
   fetchUser() {
