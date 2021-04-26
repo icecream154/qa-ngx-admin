@@ -7,7 +7,7 @@ import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { RecommendComponent } from './recommend/recommend.component';
 import { SearchComponent } from './search/search.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
-import { SupportComponent } from './support/support.component';
+import { SupportComponent } from './forms/support/support.component';
 
 const routes: Routes = [{
   path: '',

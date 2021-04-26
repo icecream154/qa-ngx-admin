@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header><h2>Make your contribution here!</h2></nb-card-header>
+      <nb-card-body>
+        <form>
+          <div class="form-group">
+            <label for="question" class="label">Question</label>
+            <input type="text" nbInput fullWidth id="question"
+                   placeholder="Question start with 'what' or 'how' is recommended">
+          </div>
+          <div class="form-group">
+            <label for="tags" class="label">
+              Tags
+            </label>
+            <input type="text" nbInput fullWidth id="tags"
+                   placeholder="You can separate different tags with whitespace, etc 'computer education'">
+          </div>
+          <div class="form-group">
+            <label for="supportAns" class="label">Your Answer</label>
+            <textarea rows="10" nbInput fullWidth cdkTextareaAutosize id="supportAns"
+                      placeholder="Type or copy your answer here"></textarea>
+          </div>
+          <button type="submit" nbButton status="primary">
+            <nb-icon icon="paper-plane-outline"></nb-icon>Commit
+          </button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

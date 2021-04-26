@@ -14,6 +14,22 @@ nb-card.inline-form-card nb-card-body {
   padding-bottom: 0;
 }
 
+form button {
+  float: right;
+}
+
+form label {
+  font-size: 1.1rem;
+}
+
+form .form-group {
+  margin-bottom: 1.6rem;
+}
+
+#tag-plus-button {
+  margin-left: 1rem;
+}
+
 nb-card-body {
   overflow: visible;
   padding-top: 0;

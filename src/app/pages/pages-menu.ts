@@ -11,11 +11,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'eye-outline',
     link: '/pages/recommend',
   },
-  // {
-  //   title: 'Support',
-  //   icon: 'eye-outline',
-  //   link: '/pages/support',
-  // },
+  {
+    title: 'Support',
+    icon: 'diagonal-arrow-right-up-outline',
+    link: '/pages/forms/support',
+  },
   // {
   //   title: 'FEATURES',
   //   group: true,

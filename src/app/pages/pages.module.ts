@@ -1,5 +1,14 @@
 import { NgModule } from '@angular/core';
-import {NbCardModule, NbCheckboxModule, NbListModule, NbMenuModule} from '@nebular/theme';
+import {
+  NbCardModule, NbCheckboxModule, NbListModule, NbMenuModule,
+  NbActionsModule,
+  NbButtonModule,
+  NbDatepickerModule, NbIconModule,
+  NbInputModule,
+  NbRadioModule,
+  NbSelectModule,
+  NbUserModule, NbCardComponent,
+} from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
@@ -17,7 +26,6 @@ import { QueriesPostPlaceholderComponent } from './recommend/infinite-list/queri
 import { QueryFetcher } from './recommend/recommend.service';
 import { InfiniteListComponent } from './recommend/infinite-list/infinite-list.component';
 import { AuthService } from '../auth/services/auth.service';
-import { SupportComponent } from './support/support.component';
 
 
 @NgModule({
@@ -31,6 +39,13 @@ import { SupportComponent } from './support/support.component';
     NbListModule,
     NbCardModule,
     NbCheckboxModule,
+    // NbActionsModule,
+    // NbButtonModule,
+    // NbDatepickerModule, NbIconModule,
+    // NbInputModule,
+    // NbRadioModule,
+    // NbSelectModule,
+    // NbUserModule,
   ],
   declarations: [
     PagesComponent,
@@ -39,7 +54,6 @@ import { SupportComponent } from './support/support.component';
     QueriesPostComponent,
     QueriesPostPlaceholderComponent,
     InfiniteListComponent,
-    SupportComponent,
   ],
   providers: [
     QueryFetcher,

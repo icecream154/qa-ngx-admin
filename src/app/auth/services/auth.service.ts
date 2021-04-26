@@ -6,7 +6,7 @@ import { of as observableOf } from 'rxjs';
 @Injectable()
 export class AuthService {
 
-  private _authUrl = 'http://3.218.156.241:9423/auth/';
+  private _authUrl = '/api/auth/';
   constructor(private http: HttpClient, private router: Router) {}
 
   fetchUser() {

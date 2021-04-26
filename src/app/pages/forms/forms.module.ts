@@ -5,7 +5,7 @@ import {
   NbCardModule,
   NbCheckboxModule,
   NbDatepickerModule, NbIconModule,
-  NbInputModule,
+  NbInputModule, NbListModule,
   NbRadioModule,
   NbSelectModule,
   NbUserModule,
@@ -19,6 +19,8 @@ import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
+import { SupportComponent } from './support/support.component';
+import {TextFieldModule} from "@angular/cdk/text-field";
 
 @NgModule({
   imports: [
@@ -35,6 +37,8 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     NbSelectModule,
     NbIconModule,
     ngFormsModule,
+    TextFieldModule,
+    NbListModule,
   ],
   declarations: [
     FormsComponent,
@@ -42,6 +46,7 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
     FormInputsComponent,
     FormLayoutsComponent,
     DatepickerComponent,
+    SupportComponent,
   ],
 })
 export class FormsModule { }
