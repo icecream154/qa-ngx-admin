@@ -26,6 +26,8 @@ import { QueriesPostPlaceholderComponent } from './recommend/infinite-list/queri
 import { QueryFetcher } from './recommend/recommend.service';
 import { InfiniteListComponent } from './recommend/infinite-list/infinite-list.component';
 import { AuthService } from '../auth/services/auth.service';
+import { SearchService } from './search/search.service';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import { AuthService } from '../auth/services/auth.service';
     NbListModule,
     NbCardModule,
     NbCheckboxModule,
+    FormsModule,
     // NbActionsModule,
     // NbButtonModule,
     // NbDatepickerModule, NbIconModule,
@@ -58,6 +61,7 @@ import { AuthService } from '../auth/services/auth.service';
   providers: [
     QueryFetcher,
     AuthService,
+    SearchService,
   ],
 })
 export class PagesModule {

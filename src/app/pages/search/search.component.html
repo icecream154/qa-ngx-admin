@@ -4,8 +4,8 @@
       <nb-card-header>Your question</nb-card-header>
       <nb-card-body>
         <form class="form-inline">
-          <input type="text" nbInput fullWidth placeholder="Type your question here">
-          <button type="submit" nbButton status="primary">Search</button>
+          <input [(ngModel)]="searchQuestion" [ngModelOptions]="{standalone: true}" type="text" nbInput fullWidth placeholder="Type your question here">
+          <button type="button" (click)="submitSearch()" nbButton status="primary">Search</button>
         </form>
       </nb-card-body>
     </nb-card>
@@ -19,8 +19,8 @@
       <nb-card-body>
         <div class="text-placeholder">
           <article>
-            <h2>Ask anything!</h2>
-            <p>Feel free to ask question here. You can also support this website if you want.</p>
+            <h2 name="answerTitle" > {{answerTitle}} </h2>
+            <p name="answerContent" > {{answerContent}} </p>
           </article>
         </div>
       </nb-card-body>
