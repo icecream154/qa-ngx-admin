@@ -20,7 +20,10 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { FormsModule as ngFormsModule } from '@angular/forms';
 import { SupportComponent } from './support/support.component';
-import {TextFieldModule} from "@angular/cdk/text-field";
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { AskQuestionComponent } from './ask-question/ask-question.component';
+import { SearchComponent } from './search/search.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
 
 @NgModule({
   imports: [
@@ -47,6 +50,9 @@ import {TextFieldModule} from "@angular/cdk/text-field";
     FormLayoutsComponent,
     DatepickerComponent,
     SupportComponent,
+    SearchComponent,
+    AskQuestionComponent,
+    PostDetailComponent,
   ],
 })
 export class FormsModule { }

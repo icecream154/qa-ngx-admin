@@ -5,7 +5,7 @@
       <nb-card-body>
         <form class="form-inline">
           <input [(ngModel)]="searchQuestion" [ngModelOptions]="{standalone: true}" type="text" nbInput fullWidth placeholder="Type your question here">
-          <button type="button" (click)="submitSearch()" nbButton status="primary">Search</button>
+          <button type="button" (click)="submitSearch()" nbButton status="primary"><nb-icon icon="search-outline"></nb-icon>Search</button>
         </form>
       </nb-card-body>
     </nb-card>
@@ -22,6 +22,10 @@
             <h2 name="answerTitle" > {{answerTitle}} </h2>
             <p name="answerContent" > {{answerContent}} </p>
           </article>
+          <div *ngIf="validRes" class="button-holder">
+            <button type="button" (click)="modifyAnswer()" nbButton status="primary">Modify Answer</button>
+            <button type="button" (click)="deleteQuestion()" nbButton status="primary">Delete Question</button>
+          </div>
         </div>
       </nb-card-body>
     </nb-card>

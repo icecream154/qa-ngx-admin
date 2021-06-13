@@ -11,6 +11,7 @@ export class SearchComponent implements OnInit {
   searchQuestion = '';
   answerTitle = 'Ask anything!';
   answerContent = 'Feel free to ask question here. You can also support this website if you want.';
+  validRes = false;
 
   constructor(private searchService: SearchService) { }
 
@@ -22,7 +23,15 @@ export class SearchComponent implements OnInit {
       ans = JSON.parse(ans);
       this.answerTitle = ans.answerTitle;
       this.answerContent = ans.answerContent;
+      this.validRes = ans.valid;
     });
   }
 
+  modifyAnswer(): void {
+    // console.log('modify answer called');
+  }
+
+  deleteQuestion(): void {
+    // console.log('delete question called');
+  }
 }

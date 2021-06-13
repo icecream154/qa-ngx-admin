@@ -1,0 +1,22 @@
+<div class="infinite-cards row">
+  <div class="col-md-12 col-lg-12 col-xxxl-12">
+    <nb-card>
+      <nb-card-header>
+        <span class="header-span">What other people are asking ...</span>
+        <span class="nav-button" (click)="toAskQuestion()"><u>Ask Question</u></span>
+      </nb-card-header>
+      <nb-list
+        nbInfiniteList
+        listenWindowScroll
+        [threshold]="500"
+        (bottomThreshold)="loadNext(secondCard)">
+        <nb-list-item *ngFor="let newsPost of secondCard.news">
+          <ngx-user-post [post]="newsPost"></ngx-user-post>
+        </nb-list-item>
+        <nb-list-item *ngFor="let _ of secondCard.placeholders">
+          <ngx-user-post-placeholder></ngx-user-post-placeholder>
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+  </div>
+</div>

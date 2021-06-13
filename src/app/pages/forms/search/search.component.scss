@@ -22,3 +22,14 @@ form input {
 nb-card.inline-form-card nb-card-body {
   padding-bottom: 0;
 }
+
+.button-holder {
+  margin-top: 10px;
+  padding: 5px;
+  text-align: right;
+
+  button {
+    margin: 8px;
+    height: 2rem;
+  }
+}

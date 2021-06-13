@@ -5,9 +5,12 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { RecommendComponent } from './recommend/recommend.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './forms/search/search.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { SupportComponent } from './forms/support/support.component';
+import { UserPostsComponent } from './user-posts-list/user-post.component';
+import { AskQuestionComponent } from './forms/ask-question/ask-question.component';
+import { PostDetailComponent } from './forms/post-detail/post-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -32,6 +35,18 @@ const routes: Routes = [{
     {
       path: 'iot-dashboard',
       component: DashboardComponent,
+    },
+    {
+      path: 'user-posts',
+      component: UserPostsComponent,
+    },
+    {
+      path: 'ask-question',
+      component: AskQuestionComponent,
+    },
+    {
+      path: 'post-detail',
+      component: PostDetailComponent,
     },
     {
       path: 'layout',

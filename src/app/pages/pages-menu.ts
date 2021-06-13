@@ -2,51 +2,58 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Search',
-    icon: 'search-outline',
-    link: '/pages/search',
-  },
-  {
-    title: 'Recommend',
-    icon: 'eye-outline',
-    link: '/pages/recommend',
-  },
-  {
-    title: 'Support',
-    icon: 'diagonal-arrow-right-up-outline',
-    link: '/pages/forms/support',
+    title: 'Wiki',
+    icon: 'layout-outline',
+    children: [
+      {
+        title: 'Search',
+        icon: 'search-outline',
+        link: '/pages/search',
+      },
+      {
+        title: 'Support',
+        icon: 'diagonal-arrow-right-up-outline',
+        link: '/pages/forms/support',
+      },
+      {
+        title: 'Recommend',
+        icon: 'eye-outline',
+        link: '/pages/recommend',
+      },
+    ],
   },
   // {
   //   title: 'FEATURES',
   //   group: true,
   // },
-  // {
-  //   title: 'Layout',
-  //   icon: 'layout-outline',
-  //   children: [
-  //     {
-  //       title: 'Stepper',
-  //       link: '/pages/layout/stepper',
-  //     },
-  //     {
-  //       title: 'List',
-  //       link: '/pages/layout/list',
-  //     },
-  //     {
-  //       title: 'Infinite List',
-  //       link: '/pages/layout/infinite-list',
-  //     },
-  //     {
-  //       title: 'Accordion',
-  //       link: '/pages/layout/accordion',
-  //     },
-  //     {
-  //       title: 'Tabs',
-  //       pathMatch: 'prefix',
-  //       link: '/pages/layout/tabs',
-  //     },
-  //   ],
-  // },
+  {
+    title: 'Community',
+    icon: 'compass-outline',
+    children: [
+      {
+        title: 'User Posts',
+        icon: 'grid-outline',
+        link: '/pages/user-posts',
+      },
+      // {
+      //   title: 'List',
+      //   link: '/pages/layout/list',
+      // },
+      // {
+      //   title: 'Infinite List',
+      //   link: '/pages/layout/infinite-list',
+      // },
+      // {
+      //   title: 'Accordion',
+      //   link: '/pages/layout/accordion',
+      // },
+      // {
+      //   title: 'Tabs',
+      //   pathMatch: 'prefix',
+      //   link: '/pages/layout/tabs',
+      // },
+    ],
+  },
   // {
   //   title: 'Forms',
   //   icon: 'edit-2-outline',

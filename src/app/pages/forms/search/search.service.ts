@@ -8,8 +8,9 @@ export class SearchService {
 
   getAnswer(question) {
     const emptyAns = {
-      answerTitle: 'Ask anything!',
-      answerContent: 'Feel free to ask question here. You can also support this website if you want.',
+      answerTitle: 'Not a valid question!',
+      answerContent: 'Please type a valid question here.',
+      valid: false,
     };
     if (question === '') {
       return observableOf(JSON.stringify(emptyAns));
@@ -18,6 +19,7 @@ export class SearchService {
         answerTitle: 'Result for ' + question,
         answerContent: 'Sorry! We cannot match any answer for this question. You can support your answer if you have' +
           ' already solved this problem.',
+        valid: true,
       };
       return observableOf(JSON.stringify(fakeAns));
     }

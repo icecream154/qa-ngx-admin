@@ -50,24 +50,36 @@ export class AuthService {
   }
 
   login(user) {
-    this.http.post<any>(this._authUrl + 'login', user).subscribe(
-      res => {
-        // console.log(res);
-        localStorage.setItem('token', JSON.stringify(res.token));
-        localStorage.setItem('user', JSON.stringify(res.user));
-        this.showToast('success', 'Log success', 'You will be redirected to search page.');
-        setTimeout(
-          function () {},
-          1500);
-        this.router.navigateByUrl('/pages/search').then(r => {
-          this.showToast('warning', 'Navigate failed', 'Please refresh the page.');
-        });
-      },
-      err => {
-        // console.log(err);
-        this.showToast('warning', 'Log failed', 'Please check your email and password.');
-      },
-    );
+    localStorage.setItem('token', 'fakeToken');
+    localStorage.setItem('user', JSON.stringify({
+      'email': 'em1',
+      'fullName': 'Peter',
+    }));
+    this.showToast('success', 'Log success', 'You will be redirected to search page.');
+    setTimeout(
+      function () {},
+      1500);
+    this.router.navigateByUrl('/pages/search').then(r => {
+      this.showToast('warning', 'Navigate failed', 'Please refresh the page.');
+    });
+    // this.http.post<any>(this._authUrl + 'login', user).subscribe(
+    //   res => {
+    //     // console.log(res);
+    //     localStorage.setItem('token', JSON.stringify(res.token));
+    //     localStorage.setItem('user', JSON.stringify(res.user));
+    //     this.showToast('success', 'Log success', 'You will be redirected to search page.');
+    //     setTimeout(
+    //       function () {},
+    //       1500);
+    //     this.router.navigateByUrl('/pages/search').then(r => {
+    //       this.showToast('warning', 'Navigate failed', 'Please refresh the page.');
+    //     });
+    //   },
+    //   err => {
+    //     // console.log(err);
+    //     this.showToast('warning', 'Log failed', 'Please check your email and password.');
+    //   },
+    // );
   }
 
   private showToast(type: NbComponentStatus, title: string, body: string) {
