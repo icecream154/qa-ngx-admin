@@ -20,7 +20,10 @@
         <div class="text-placeholder">
           <article>
             <h2 name="answerTitle" > {{answerTitle}} </h2>
-            <p name="answerContent" > {{answerContent}} </p>
+            <nb-option *ngFor="let ans of answer">
+              <p class="answerContent" > {{ans}} </p>
+              <br>
+            </nb-option>
           </article>
           <div *ngIf="validRes" class="button-holder">
             <button type="button" (click)="modifyAnswer()" nbButton status="primary">Modify Answer</button>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {delay, map} from 'rxjs/operators';
+import {Question} from '../entity/question';
 
 export class QueryPost {
   title: string;
@@ -15,13 +16,14 @@ export class QueryFetcher {
 
   constructor(private http: HttpClient) {}
 
-  load(page: number, pageSize: number): Observable<QueryPost[]> {
+  load(page: number, pageSize: number): Observable<Question[]> {
     const startIndex = ((page - 1) % 7) * pageSize;
-
+    // page = 1;
+    pageSize = 5;
+    const token = localStorage.getItem('token');
     return this.http
-      .get<QueryPost[]>('assets/data/news.json')
+      .get<Question[]>('/api/kg/popular?pageSize=' + pageSize + '&pageNum=' + page, {headers: {'token': token}})
       .pipe(
-        map(news => news.splice(startIndex, pageSize)),
         delay(1500),
       );
   }

@@ -1,27 +1,15 @@
 import { Injectable } from '@angular/core';
-import { of as observableOf } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class SearchService {
 
-  constructor() { }
+  private _queryUrl = '/api/kg/query';
+  constructor(private http: HttpClient) { }
 
   getAnswer(question) {
-    const emptyAns = {
-      answerTitle: 'Not a valid question!',
-      answerContent: 'Please type a valid question here.',
-      valid: false,
-    };
-    if (question === '') {
-      return observableOf(JSON.stringify(emptyAns));
-    } else {
-      const fakeAns = {
-        answerTitle: 'Result for ' + question,
-        answerContent: 'Sorry! We cannot match any answer for this question. You can support your answer if you have' +
-          ' already solved this problem.',
-        valid: true,
-      };
-      return observableOf(JSON.stringify(fakeAns));
-    }
+    const token = localStorage.getItem('token');
+    const params = new HttpParams().set('query', question);
+    return this.http.get<any>(this._queryUrl, {params, headers: {'token': token}}).toPromise();
   }
 }

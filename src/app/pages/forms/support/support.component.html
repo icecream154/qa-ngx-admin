@@ -7,21 +7,26 @@
           <div class="form-group">
             <label for="question" class="label">Question</label>
             <input type="text" nbInput fullWidth id="question"
-                   placeholder="Question start with 'what' or 'how' is recommended">
+                   placeholder="Target object of your question, such as 'heart disease'"
+                   disabled="{{isUpdate}}"
+                   [(ngModel)]="question.param1" [ngModelOptions]="{standalone: true}">
           </div>
           <div class="form-group">
-            <label for="tags" class="label">
-              Tags
+            <label for="type" class="label">
+              Type
             </label>
-            <input type="text" nbInput fullWidth id="tags"
-                   placeholder="You can separate different tags with whitespace, etc 'computer education'">
+            <input type="text" nbInput fullWidth id="type"
+                   placeholder="Question type, such as 'disease_symptom'"
+                   disabled="{{isUpdate}}"
+                   [(ngModel)]="question.type" [ngModelOptions]="{standalone: true}">
           </div>
           <div class="form-group">
             <label for="supportAns" class="label">Your Answer</label>
-            <textarea rows="12" nbInput fullWidth cdkTextareaAutosize id="supportAns"
-                      placeholder="Type or copy your answer here"></textarea>
+            <textarea rows="12" nbInput fullWidth id="supportAns"
+                      placeholder="Type or copy your answer here"
+                      [(ngModel)]="rawAnswer" [ngModelOptions]="{standalone: true}"></textarea>
           </div>
-          <button type="submit" nbButton status="primary">
+          <button type="submit" nbButton status="primary" (click)="submit()">
             <nb-icon icon="paper-plane-outline"></nb-icon>Commit
           </button>
         </form>

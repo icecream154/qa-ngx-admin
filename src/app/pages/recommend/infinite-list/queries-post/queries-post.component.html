@@ -1,5 +1,6 @@
 <article>
-  <h2>{{post.title}}</h2>
-  <p>{{post.text}}</p>
-  <a [attr.href]="post.link">Modify</a>
+  <p class="quesContent">
+    {{post.description}} heat: {{post.hot}}
+  </p>
+  <button status="primary" size="medium" (click)="toDetail()">=> See detail</button>
 </article>
