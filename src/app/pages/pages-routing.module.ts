@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { RecommendComponent } from './forms/recommend/recommend.component';
 import { SearchComponent } from './forms/search/search.component';
-import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { SupportComponent } from './forms/support/support.component';
 import { UserPostsComponent } from './user-posts-list/user-post.component';
 import { AskQuestionComponent } from './forms/ask-question/ask-question.component';
@@ -47,10 +46,6 @@ const routes: Routes = [{
       path: '',
       redirectTo: 'search',
       pathMatch: 'full',
-    },
-    {
-      path: '**',
-      component: NotFoundComponent,
     },
   ],
 }];
