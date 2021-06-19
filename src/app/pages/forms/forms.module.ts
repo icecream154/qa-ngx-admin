@@ -29,6 +29,7 @@ import { QueriesPostComponent } from './recommend/infinite-list/queries-post/que
 import { QueriesPostPlaceholderComponent } from './recommend/infinite-list/queries-post-placeholder/queries-post-placeholder.component';
 import { InfiniteListComponent } from './recommend/infinite-list/infinite-list.component';
 import { QueryFetcher } from './recommend/recommend.service';
+import { NgxEchartsModule} from 'ngx-echarts';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { QueryFetcher } from './recommend/recommend.service';
     ngFormsModule,
     TextFieldModule,
     NbListModule,
+    NgxEchartsModule,
   ],
   declarations: [
     FormsComponent,

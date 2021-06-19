@@ -4,6 +4,7 @@ import { NbComponentStatus, NbGlobalPhysicalPosition, NbToastrService } from '@n
 import { Question } from '../../entity/question';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { EChartsOption } from 'echarts';
 
 @Component({
   selector: 'ngx-search',
@@ -11,6 +12,98 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
+
+  chartOption: EChartsOption = {
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+      },
+    ],
+  };
+
+  option = {
+    title: {
+      text: 'Graph 简单示例',
+    },
+    tooltip: {},
+    animationDurationUpdate: 1500,
+    animationEasingUpdate: 'quinticInOut',
+    series: [
+      {
+        type: 'graph',
+        layout: 'force',
+        symbolSize: 25,
+        force: {
+          repulsion: 1000,
+        },
+        roam: true,
+        label: {
+          show: true,
+        },
+        edgeSymbol: ['circle', 'arrow'],
+        edgeSymbolSize: [2, 5],
+        edgeLabel: {
+          fontSize: 10,
+        },
+        data: [{
+          name: '节点1',
+        }, {
+          name: '节点2',
+        }, {
+          name: '节点3',
+        }, {
+          name: '节点4',
+        }],
+        // links: [],
+        links: [{
+          source: 0,
+          target: 1,
+          symbolSize: [5, 20],
+          label: {
+            show: true,
+          },
+          lineStyle: {
+            width: 5,
+            curveness: 0.2,
+          },
+        }, {
+          source: '节点2',
+          target: '节点1',
+          label: {
+            show: true,
+          },
+          lineStyle: {
+            curveness: 0.2,
+          },
+        }, {
+          source: '节点1',
+          target: '节点3',
+        }, {
+          source: '节点2',
+          target: '节点3',
+        }, {
+          source: '节点2',
+          target: '节点4',
+        }, {
+          source: '节点1',
+          target: '节点4',
+        }],
+        lineStyle: {
+          opacity: 0.9,
+          width: 2,
+          curveness: 0,
+        },
+      },
+    ],
+  };
 
   searchQuestion = '';
   answerTitle = 'Ask anything!';
