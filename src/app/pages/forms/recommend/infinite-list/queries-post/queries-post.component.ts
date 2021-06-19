@@ -1,6 +1,6 @@
 import { Component, Input, OnInit} from '@angular/core';
 
-import { Question } from '../../../entity/question';
+import { Question } from '../../../../entity/question';
 import { Router } from '@angular/router';
 
 @Component({

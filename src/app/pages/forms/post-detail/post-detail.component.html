@@ -6,7 +6,7 @@
       <nb-card-body>
         <div class="text-placeholder">
           <article>
-            <h2 name="question" > {{question}} </h2>
+            <h2 name="question" > {{title}} </h2>
             <p name="detail" > {{detail}} </p>
           </article>
         </div>
@@ -22,15 +22,15 @@
       <nb-card-body>
         <nb-list>
           <nb-list-item *ngFor="let answer of answers">
-            <nb-card class="list-card" size="{{getCardSize(answer.content)}}" style="width: 100%; padding: 5px; border-width: 0px">
+            <nb-card class="list-card" size="{{getCardSize(answer.detail)}}" style="width: 100%; padding: 5px; border-width: 0px">
               <nb-card-header>
-                <span class="username"><strong>{{answer.name}}</strong></span>
+                <span class="username"><strong>{{answer.email.split('@')[0]}}</strong></span>
                 <span class="email"><u>{{answer.email}}</u></span>
               </nb-card-header>
               <nb-card-body>
-                <div class="text-placeholder">
+                <div class="text-placeholder ans-detail">
                   <article>
-                    {{answer.content}}
+                    {{answer.detail}}
                   </article>
                 </div>
               </nb-card-body>
@@ -49,10 +49,11 @@
       <nb-card-body>
         <form>
           <div class="form-group">
-            <textarea rows="14" nbInput fullWidth cdkTextareaAutosize id="supportAns"
-                      placeholder="Type or copy your answer here"></textarea>
+            <textarea rows="10" nbInput fullWidth id="supportAns"
+                      placeholder="Type or copy your answer here"
+                      [(ngModel)]="userAnswer" [ngModelOptions]="{standalone: true}"></textarea>
           </div>
-          <button type="submit" nbButton status="primary">
+          <button type="button" nbButton status="primary" (click)="submitAns()">
             <nb-icon icon="paper-plane-outline"></nb-icon>Commit
           </button>
         </form>

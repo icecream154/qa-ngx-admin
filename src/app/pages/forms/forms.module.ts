@@ -24,6 +24,11 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { SearchComponent } from './search/search.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { RecommendComponent } from './recommend/recommend.component';
+import { QueriesPostComponent } from './recommend/infinite-list/queries-post/queries-post.component';
+import { QueriesPostPlaceholderComponent } from './recommend/infinite-list/queries-post-placeholder/queries-post-placeholder.component';
+import { InfiniteListComponent } from './recommend/infinite-list/infinite-list.component';
+import { QueryFetcher } from './recommend/recommend.service';
 
 @NgModule({
   imports: [
@@ -53,6 +58,14 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     SearchComponent,
     AskQuestionComponent,
     PostDetailComponent,
+    RecommendComponent,
+    QueriesPostComponent,
+    QueriesPostPlaceholderComponent,
+    InfiniteListComponent,
+    RecommendComponent,
+  ],
+  providers: [
+    QueryFetcher,
   ],
 })
 export class FormsModule { }

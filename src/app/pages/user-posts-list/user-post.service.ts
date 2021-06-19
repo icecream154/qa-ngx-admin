@@ -5,8 +5,11 @@ import { delay, map } from 'rxjs/operators';
 
 export class UserPost {
   id: number;
-  question: string;
-  shortAnswer: string;
+  qid: number;
+  email: string;
+  title: string;
+  detail: string;
+  type: string;
 }
 
 @Injectable()
@@ -15,12 +18,11 @@ export class PostFetcher {
   constructor(private http: HttpClient) {}
 
   load(page: number, pageSize: number): Observable<UserPost[]> {
-    const startIndex = ((page - 1) % 7) * pageSize;
-
+    pageSize = 5;
+    const token = localStorage.getItem('token');
     return this.http
-      .get<UserPost[]>('assets/data/user-posts.json')
+      .get<UserPost[]>('/api/user/allquestions?pageSize=' + pageSize + '&pageNum=' + page, {headers: {'token': token}})
       .pipe(
-        map(news => news.splice(startIndex, pageSize)),
         delay(1500),
       );
   }

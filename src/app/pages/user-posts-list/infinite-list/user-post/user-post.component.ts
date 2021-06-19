@@ -14,6 +14,6 @@ export class UserPostComponent {
   @Input() post: UserPost;
 
   toShowDetail(id) {
-    this.router.navigateByUrl('/pages/post-detail?id=' + id).then(r => {});
+    this.router.navigateByUrl('/pages/post-detail?qid=' + id);
   }
 }
