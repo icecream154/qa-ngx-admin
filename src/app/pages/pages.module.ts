@@ -1,13 +1,6 @@
 import { NgModule } from '@angular/core';
 import {
   NbCardModule, NbCheckboxModule, NbListModule, NbMenuModule,
-  NbActionsModule,
-  NbButtonModule,
-  NbDatepickerModule, NbIconModule,
-  NbInputModule,
-  NbRadioModule,
-  NbSelectModule,
-  NbUserModule, NbCardComponent,
 } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
@@ -41,13 +34,6 @@ import { QueryFetcher } from './forms/recommend/recommend.service';
     NbCardModule,
     NbCheckboxModule,
     FormsModule,
-    // NbActionsModule,
-    // NbButtonModule,
-    // NbDatepickerModule, NbIconModule,
-    // NbInputModule,
-    // NbRadioModule,
-    // NbSelectModule,
-    // NbUserModule,
   ],
   declarations: [
     PagesComponent,
