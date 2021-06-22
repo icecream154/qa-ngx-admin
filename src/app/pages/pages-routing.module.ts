@@ -44,6 +44,11 @@ const routes: Routes = [{
         .then(m => m.FormsModule),
     },
     {
+      path: 'charts',
+      loadChildren: () => import('./charts/charts.module')
+        .then(m => m.ChartsModule),
+    },
+    {
       path: '',
       redirectTo: 'search',
       pathMatch: 'full',
