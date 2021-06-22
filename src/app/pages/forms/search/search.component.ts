@@ -1,9 +1,9 @@
-import { Component, Inject, OnInit} from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { SearchService } from './search.service';
 import { NbComponentStatus, NbGlobalPhysicalPosition, NbToastrService } from '@nebular/theme';
 import { Question } from '../../entity/question';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { EChartsOption } from 'echarts';
 
 @Component({
@@ -13,25 +13,61 @@ import { EChartsOption } from 'echarts';
 })
 export class SearchComponent implements OnInit {
 
-  chartOption: EChartsOption = {
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-    },
-    yAxis: {
-      type: 'value',
-    },
-    series: [
-      {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line',
-      },
-    ],
-  };
+  onChartInit(ec) {
+    this.gCharts = ec;
+  }
+
+  searchQuestion = '';
+  gCharts;
+  graphData = [
+    // {
+    //   'relation': '症状',
+    //   'content': '头晕',
+    // },
+    // {
+    //   'relation': '症状',
+    //   'content': '头痛',
+    // },
+    // {
+    //   'relation': '吃什么',
+    //   'content': '心脏病药',
+    // },
+    // {
+    //   'relation': '看什么',
+    //   'content': '心脏病医生',
+    // },
+    // {
+    //   'relation': '怎么办',
+    //   'content': '给自己买好棺材',
+    // },
+  ];
+
+  randomHexColor(): string {
+    let hex = Math.floor(Math.random() * 16777216).toString(16);
+    while (hex.length < 6) {
+      hex = '0' + hex;
+    }
+    return '#' + hex;
+  }
+
+  generateGraphData(inputData, queryItself): any {
+    const data = [];
+    const links = [];
+    data.push({name: queryItself});
+    for (const item of inputData) {
+      data.push({name: item.content, itemStyle: {color: this.randomHexColor()}});
+    }
+    for (const item of inputData) {
+      links.push({source: queryItself, target: item.content, labelText: item.relation});
+    }
+    return [data, links];
+  }
+  visData = this.generateGraphData(this.graphData, this.searchQuestion)[0];
+  visLinks = this.generateGraphData(this.graphData, this.searchQuestion)[1];
 
   option = {
     title: {
-      text: 'Graph 简单示例',
+      text: 'Knowledge Graph',
     },
     tooltip: {},
     animationDurationUpdate: 1500,
@@ -40,72 +76,39 @@ export class SearchComponent implements OnInit {
       {
         type: 'graph',
         layout: 'force',
-        symbolSize: 25,
+        symbolSize: 65,
+        edgeLength: [150, 100],
+        focusNodeAdjacency: true,
         force: {
-          repulsion: 1000,
+          repulsion: 2500,
         },
         roam: true,
         label: {
           show: true,
         },
         edgeSymbol: ['circle', 'arrow'],
-        edgeSymbolSize: [2, 5],
+        edgeSymbolSize: [2, 10],
         edgeLabel: {
           fontSize: 10,
+          normal: {
+            show: true,
+            formatter: function (param) {
+              return param.data.labelText;
+            },
+          },
         },
-        data: [{
-          name: '节点1',
-        }, {
-          name: '节点2',
-        }, {
-          name: '节点3',
-        }, {
-          name: '节点4',
-        }],
+        data: this.visData,
         // links: [],
-        links: [{
-          source: 0,
-          target: 1,
-          symbolSize: [5, 20],
-          label: {
-            show: true,
-          },
-          lineStyle: {
-            width: 5,
-            curveness: 0.2,
-          },
-        }, {
-          source: '节点2',
-          target: '节点1',
-          label: {
-            show: true,
-          },
-          lineStyle: {
-            curveness: 0.2,
-          },
-        }, {
-          source: '节点1',
-          target: '节点3',
-        }, {
-          source: '节点2',
-          target: '节点3',
-        }, {
-          source: '节点2',
-          target: '节点4',
-        }, {
-          source: '节点1',
-          target: '节点4',
-        }],
+        links: this.visLinks,
         lineStyle: {
           opacity: 0.9,
-          width: 2,
+          width: 5,
           curveness: 0,
         },
       },
     ],
   };
 
-  searchQuestion = '';
   answerTitle = 'Ask anything!';
   answer = ['Feel free to ask question here. You can also support this website if you want.'];
   validRes = false;
@@ -171,15 +174,30 @@ export class SearchComponent implements OnInit {
       this.answer = resData.answer;
       this.validRes = resData.answer.length === 1;
     }
+
+    const token = localStorage.getItem('token');
+    const params = new HttpParams().set('query', this.searchQuestion);
+    this.http.get<any>( '/api/kg/queryRelation', {params, headers : {'token': token}}).subscribe(
+      res => {
+        this.graphData = res.data.answer;
+        this.visData = this.generateGraphData(this.graphData, this.searchQuestion)[0];
+        this.visLinks = this.generateGraphData(this.graphData, this.searchQuestion)[1];
+        this.option.series[0].data = this.visData;
+        this.option.series[0].links = this.visLinks;
+        this.gCharts.setOption(this.option);
+        // echarts.getInstance(this.gCharts).setOption(this.option);
+      },
+      err => {
+        this.showToast('warning', 'Get log detail failed', '');
+      },
+    );
   }
 
   modifyAnswer(): void {
-    // console.log('modify answer called');
     this.router.navigateByUrl('/pages/support?isUpdate=true');
   }
 
   deleteQuestion(): void {
-    // console.log('delete question called');
     const token = localStorage.getItem('token');
     const req = {
       query: this.searchQuestion,

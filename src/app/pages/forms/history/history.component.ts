@@ -19,7 +19,6 @@ export class HistoryComponent implements OnInit {
     const params = new HttpParams().set('lognum', '1000').set('email', this.email);
     this.http.get<any>( '/api/user/logs', {params, headers : {'token': token}}).subscribe(
       res => {
-        console.log(res);
         this.logs = res.logs;
       },
       err => {
