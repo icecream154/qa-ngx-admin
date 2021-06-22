@@ -35,6 +35,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
         icon: 'grid-outline',
         link: '/pages/user-posts',
       },
+      {
+        title: 'History',
+        icon: 'grid-outline',
+        link: '/pages/history',
+      },
       // {
       //   title: 'List',
       //   link: '/pages/layout/list',

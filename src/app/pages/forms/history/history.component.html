@@ -1,0 +1,43 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="list-card" size="tiny">
+      <nb-card-header><h4>My History</h4></nb-card-header>
+      <nb-card-body>
+        <div class="text-placeholder">
+          <article class="user-info">
+            <h2 name="usernmae" > {{username}} </h2>
+            <p name="email" > {{email}} </p>
+          </article>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="list-card" size="giant">
+      <nb-card-header><h4>Logs</h4></nb-card-header>
+      <nb-card-body>
+        <nb-list>
+          <nb-list-item *ngFor="let log of logs">
+            <nb-card class="list-card" size='tiny' style="width: 100%; padding: 5px; border-width: 0px">
+              <nb-card-header>
+                <p class="query"><strong>Q:&nbsp;&nbsp;{{log.query}}</strong></p>
+                <span class="extra info"><strong>{{log.type}}</strong>&nbsp;&nbsp;{{log.time}}</span>
+              </nb-card-header>
+              <nb-card-body>
+                <div class="text-placeholder ans-detail">
+                  <article>
+                    <span class="extend-info">{{log.ext_info}}</span>
+                  </article>
+                </div>
+              </nb-card-body>
+            </nb-card>
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

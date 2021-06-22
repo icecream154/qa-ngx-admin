@@ -8,6 +8,7 @@ import { SupportComponent } from './forms/support/support.component';
 import { UserPostsComponent } from './user-posts-list/user-post.component';
 import { AskQuestionComponent } from './forms/ask-question/ask-question.component';
 import { PostDetailComponent } from './forms/post-detail/post-detail.component';
+import { HistoryComponent } from './forms/history/history.component';
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +25,10 @@ const routes: Routes = [{
     {
       path: 'support',
       component: SupportComponent,
+    },
+    {
+      path: 'history',
+      component: HistoryComponent,
     },
     {
       path: 'user-posts',

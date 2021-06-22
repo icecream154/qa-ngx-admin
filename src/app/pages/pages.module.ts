@@ -17,6 +17,7 @@ import { UserPostComponent } from './user-posts-list/infinite-list/user-post/use
 import { UserPostPlaceholderComponent } from './user-posts-list/infinite-list/user-post-placeholder/user-post-placeholder.component';
 import { UserPostInfiniteListComponent } from './user-posts-list/infinite-list/user-post-infinite-list.component';
 import { QueryFetcher } from './forms/recommend/recommend.service';
+import { HistoryComponent } from './forms/history/history.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { QueryFetcher } from './forms/recommend/recommend.service';
     FormsModule,
   ],
   declarations: [
+    HistoryComponent,
     PagesComponent,
     UserPostsComponent,
     UserPostComponent,
