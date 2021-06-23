@@ -19,28 +19,7 @@ export class SearchComponent implements OnInit {
 
   searchQuestion = '';
   gCharts;
-  graphData = [
-    // {
-    //   'relation': '症状',
-    //   'content': '头晕',
-    // },
-    // {
-    //   'relation': '症状',
-    //   'content': '头痛',
-    // },
-    // {
-    //   'relation': '吃什么',
-    //   'content': '心脏病药',
-    // },
-    // {
-    //   'relation': '看什么',
-    //   'content': '心脏病医生',
-    // },
-    // {
-    //   'relation': '怎么办',
-    //   'content': '给自己买好棺材',
-    // },
-  ];
+  graphData = [];
 
   randomHexColor(): string {
     let hex = Math.floor(Math.random() * 16777216).toString(16);
@@ -158,12 +137,14 @@ export class SearchComponent implements OnInit {
     }
 
     const resp: any = await this.searchService.getAnswer(this.searchQuestion);
+    let param1 = '';
     if (resp.msg.toLowerCase() !== 'ok') {
       this.showToast('warning', 'Query failed', 'Please check your network or login again');
     } else if (resp.data.result.toLowerCase() !== 'ok') {
       this.showToast('warning', 'Query failed', 'Please try another question');
       this.setAns(this.notValidAns);
     } else {
+      param1 = resp.data.param1;
       this.showToast('success', 'Query success', '');
       const resData = resp.data;
       const rawAns = resData.answer[0].substring(resData.answer[0].indexOf('：') + 1).split('；');
@@ -180,8 +161,8 @@ export class SearchComponent implements OnInit {
     this.http.get<any>( '/api/kg/queryRelation', {params, headers : {'token': token}}).subscribe(
       res => {
         this.graphData = res.data.answer;
-        this.visData = this.generateGraphData(this.graphData, this.searchQuestion)[0];
-        this.visLinks = this.generateGraphData(this.graphData, this.searchQuestion)[1];
+        this.visData = this.generateGraphData(this.graphData, param1)[0];
+        this.visLinks = this.generateGraphData(this.graphData, param1)[1];
         this.option.series[0].data = this.visData;
         this.option.series[0].links = this.visLinks;
         this.gCharts.setOption(this.option);
